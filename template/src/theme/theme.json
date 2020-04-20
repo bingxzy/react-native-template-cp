@@ -1,0 +1,20 @@
+[
+    {
+        "key": "blue",
+        "color": {
+           "primary":"#409EFF"
+        },
+        "txtColor":{
+            "primary":"#F2F6FC"
+        }
+    },
+    {
+        "key": "red",
+        "color": {
+           "primary":"#F56C6C"
+        },
+        "txtColor":{
+            "primary":"#F2F6FC"
+        }
+    }
+]

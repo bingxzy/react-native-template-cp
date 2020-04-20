@@ -1,0 +1,10 @@
+{
+    "HELLO":"Hi React Native",
+    "LANGUAGE":"English",
+    "SIGN_BTN":"Sign in with Apple",
+    "CURRENT_LANGUAGE":"Current Language ： {{language}}",
+    "CURRENT_THEME":"Current Theme ： {{theme}}",
+    "AXIOX_TODO":"GO TO TODOLIST (axios) ",
+    "AXIOX_TODO_REDUX":"GO TO TODOLIST (redux)",
+    "LOGOUT":"Logout"
+}

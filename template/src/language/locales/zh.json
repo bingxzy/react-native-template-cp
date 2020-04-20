@@ -1,0 +1,10 @@
+{
+    "HELLO":"你好！React Native",
+    "LANGUAGE":"中文",
+    "SIGN_BTN":"Apple ID 登录",
+    "CURRENT_LANGUAGE":"当前语言 ： {{language}}",
+    "CURRENT_THEME":"当前主题 ： {{theme}}",
+    "AXIOX_TODO":"前往 TODOLIST (axios) ",
+    "AXIOX_TODO_REDUX":"前往 TODOLIST (redux)",
+    "LOGOUT":"注销登录"
+}
