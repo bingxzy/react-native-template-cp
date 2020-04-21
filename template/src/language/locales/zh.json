@@ -6,5 +6,6 @@
     "CURRENT_THEME":"当前主题 ： {{theme}}",
     "AXIOX_TODO":"前往 TODOLIST (axios) ",
     "AXIOX_TODO_REDUX":"前往 TODOLIST (redux)",
+    "CURRENT_FONTSIZE":"当前字体大小 ： {{key}}",
     "LOGOUT":"注销登录"
 }

@@ -6,5 +6,6 @@
     "CURRENT_THEME":"Current Theme ： {{theme}}",
     "AXIOX_TODO":"GO TO TODOLIST (axios) ",
     "AXIOX_TODO_REDUX":"GO TO TODOLIST (redux)",
+    "CURRENT_FONTSIZE":"Current FontSize ： {{key}}",
     "LOGOUT":"Logout"
 }
