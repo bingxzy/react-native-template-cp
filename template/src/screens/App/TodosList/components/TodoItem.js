@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { withTheme } from '../../../../theme';
+import { Text } from '../../../../comm/components';
 
 const TodoItem = ({ item: data, theme }) => {
   const { title, completed } = data;

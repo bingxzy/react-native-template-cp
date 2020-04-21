@@ -6,9 +6,9 @@ export const changeLanguageAction = (language) => ({
   language,
 });
 
-export const changeFontSizeAction = (fontSize) => ({
+export const changeFontScaleAction = (fontScaleKey) => ({
   type: CHANGE_FONT_SIZE,
-  fontSize,
+  fontScaleKey,
 });
 
 
@@ -19,17 +19,17 @@ export const changeLanguageAsyncAction = (language) => ({
 
 const initialState = {
   language: getSystemLanguage(),
-  fontSize: 0,
+  fontScaleKey: 'default',
 };
 
 
 export const Reducer = (state = initialState, action) => {
-  const { type, language, fontSize } = action;
+  const { type, language, fontScaleKey } = action;
   switch (type) {
     case CHANGE_LANGUAGE:
       return { ...state, ...{ language } };
     case CHANGE_FONT_SIZE:
-      return { ...state, ...{ fontSize } };
+      return { ...state, ...{ fontScaleKey } };
     default:
       return state;
   }

@@ -1,6 +1,6 @@
 import {
   changeLanguageAsyncAction as changeLanguage,
-  changeFontSizeAction as changeFontSize,
+  changeFontScaleAction as changeFontScale,
 } from './reducer/app';
 
 import {
@@ -9,6 +9,6 @@ import {
 
 export default {
   changeLanguage,
-  changeFontSize,
+  changeFontScale,
   fetchTodos,
 };

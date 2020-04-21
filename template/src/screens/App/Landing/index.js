@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {
-  View, StyleSheet, Text, Image,
+  View, StyleSheet, Image,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import i18n from '../../../language';
-import { Button } from '../../../comm/components';
+import { Button, Text } from '../../../comm/components';
 import ReduxActions from '../../../stores/actions';
 import { withTheme } from '../../../theme';
 import utils from '../../../utils';
@@ -111,6 +111,24 @@ class AppLandingSrceen extends Component {
     );
   }
 
+  fontSizeRender = () => {
+    const { theme, fontScaleKey, changeFontScale } = this.props;
+    const gotoLabel = i18n.t('CURRENT_FONTSIZE', { key: fontScaleKey });
+    return (
+      <View style={{ paddingTop: 10 }}>
+        <Button
+          style={{ backgroundColor: theme.color.primary }}
+          onPress={() => {
+            const newFontScaleKey = fontScaleKey === 'default' ? 'large' : 'default';
+            changeFontScale(newFontScaleKey);
+          }}
+        >
+          {gotoLabel}
+        </Button>
+      </View>
+    );
+  }
+
   logoutRender = () => {
     const { theme, setTheme } = this.props;
     const gotoLabel = i18n.t('LOGOUT');
@@ -137,6 +155,7 @@ class AppLandingSrceen extends Component {
         {this.themeRender()}
         {this.gotoTodos()}
         {this.gotoReduxTodos()}
+        {this.fontSizeRender()}
         {this.logoutRender()}
       </View>
     );
@@ -169,6 +188,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   language: state.app.language && state.app.language,
+  fontScaleKey: state.app.fontScaleKey || 'default',
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(ReduxActions, dispatch);
