@@ -1,48 +1,37 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  FlatList, StyleSheet, ScrollView, View,
+  FlatList, StyleSheet, View,
 } from 'react-native';
 import TodoItem from './components/TodoItem';
 import service from './service';
 
+const TodosListScreen = () => {
+  const [todosList, setTodosList] = useState([]);
 
-class TodosListScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      todosList: [],
-    };
-  }
+  useEffect(() => {
+    service.getTodosListData().then((data) => {
+      setTodosList(data);
+    });
+  }, []);
 
-  componentDidMount() {
-    service.getTodosListData(this);
-  }
-
-
-  listRender = () => {
-    const { todosList } = this.state;
-    return (
-      <FlatList
-        data={todosList}
-        showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={({ highlighted }) => (
-          <View style={[styles.separator, highlighted && { marginLeft: 0 }]} />
-        )}
-        renderItem={({ item }) => <TodoItem item={item} />}
-        keyExtractor={(item) => item.id + new Date().toString()}
-      />
-    );
-  }
-
-
-  render() {
-    return (
-      <ScrollView style={styles.container}>
-        {this.listRender()}
-      </ScrollView>
-    );
-  }
-}
+  const listRender = () => (
+    <FlatList
+      data={todosList}
+      showsVerticalScrollIndicator={false}
+      ItemSeparatorComponent={({ highlighted }) => (
+        <View style={[styles.separator, highlighted && { marginLeft: 0 }]} />
+      )}
+      renderItem={({ item }) => <TodoItem item={item} />}
+      keyExtractor={(item) => item.id + new Date().toString()}
+      style={styles.container}
+    />
+  );
+  return (
+    <>
+      {listRender()}
+    </>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

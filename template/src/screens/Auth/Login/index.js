@@ -5,7 +5,6 @@ import {
 import i18n from '../../../language';
 import service from './service';
 
-
 class LoginSrceen extends Component {
   loginRender = () => {
     const title = 'Sign into your account';

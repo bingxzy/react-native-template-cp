@@ -15,7 +15,6 @@ const logoutTakeAction = async (setTheme) => {
   utils.navigation.navigate('Auth');
 };
 
-
 export default {
   logoutTakeAction,
 };

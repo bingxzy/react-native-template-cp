@@ -1,5 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, StyleSheet } from 'react-native';
+import Text from '../Text';
 
 const Button = (props) => {
   const {
@@ -11,7 +12,6 @@ const Button = (props) => {
     </TouchableOpacity>
   );
 };
-
 
 const styles = StyleSheet.create({
   btnContainer: {
@@ -27,6 +27,5 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
 });
-
 
 export default Button;

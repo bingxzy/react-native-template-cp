@@ -3,11 +3,9 @@ import utils from '../utils';
 import THEMES from './theme.json';
 import { THEME_ID } from '../comm/constant';
 
-
 export const defThemeID = THEMES[0].key;
 
 export const ThemeContext = React.createContext();
-
 
 export const ThemeContextProvider = ({ children }) => {
   const [themeID, setThemeID] = useState(defThemeID);
@@ -54,7 +52,6 @@ export const withTheme = (Component) => (props) => {
     />
   );
 };
-
 
 export const withAppContainerTheme = (AppContainer) => (props) => {
   const { themeID } = useContext(ThemeContext);

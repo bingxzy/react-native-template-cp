@@ -1,17 +1,17 @@
 import api from '../../../api';
 import Loading from '../../../comm/components/Loading';
 
-const getTodosListData = async (_that) => {
+const getTodosListData = async () => {
+  Loading.show();
+  let data = [];
   try {
-    Loading.show();
-    const data = await api.todos.getTodoList();
-    Loading.dimiss();
-    _that.setState({ todosList: data });
+    data = await api.todos.getTodoList();
   } catch (error) {
-    Loading.dimiss();
+    console.log(error);
   }
+  Loading.dimiss();
+  return data;
 };
-
 
 export default {
   getTodosListData,

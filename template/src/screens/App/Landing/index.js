@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   View, StyleSheet, Image,
 } from 'react-native';
@@ -11,43 +11,36 @@ import { withTheme } from '../../../theme';
 import utils from '../../../utils';
 import service from './service';
 
-
-class AppLandingSrceen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  logoRender = () => {
+const AppLandingSrceen = ({
+  theme, setTheme,
+  language, changeLanguage, fontScaleKey, changeFontScale,
+}) => {
+  const logoRender = () => {
     const logo = require('../../../static/images/react_logo.png');
     return (
       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
         <Image source={logo} style={styles.logo} />
       </View>
     );
-  }
+  };
 
-  helloRender = () => {
+  const helloRender = () => {
     const helloLabel = i18n.t('HELLO');
     return (
       <View style={styles.helloContainer}>
         <Text style={styles.helloTxt}>{helloLabel}</Text>
       </View>
     );
-  }
+  };
 
-  languageRender = () => {
-    const language = i18n.t('LANGUAGE');
+  const languageRender = () => {
     const currLangLabel = i18n.t('CURRENT_LANGUAGE', { language });
-    const { language: currLang, changeLanguage, theme } = this.props;
     return (
       <View>
         <Button
           style={{ backgroundColor: theme.color.primary }}
           onPress={() => {
-            const newLang = currLang === 'zh' ? 'en' : 'zh';
-            console.log(newLang);
+            const newLang = language === 'zh' ? 'en' : 'zh';
             changeLanguage(newLang);
           }}
         >
@@ -55,10 +48,9 @@ class AppLandingSrceen extends Component {
         </Button>
       </View>
     );
-  }
+  };
 
-  themeRender = () => {
-    const { theme, setTheme } = this.props;
+  const themeRender = () => {
     const currTheme = theme.key;
     const currThemeLabel = i18n.t('CURRENT_THEME', { theme: currTheme });
     return (
@@ -75,10 +67,9 @@ class AppLandingSrceen extends Component {
         </Button>
       </View>
     );
-  }
+  };
 
-  gotoTodos = () => {
-    const { theme } = this.props;
+  const gotoTodos = () => {
     const gotoLabel = i18n.t('AXIOX_TODO');
     return (
       <View style={{ paddingTop: 10 }}>
@@ -92,10 +83,9 @@ class AppLandingSrceen extends Component {
         </Button>
       </View>
     );
-  }
+  };
 
-  gotoReduxTodos = () => {
-    const { theme } = this.props;
+  const gotoReduxTodos = () => {
     const gotoLabel = i18n.t('AXIOX_TODO_REDUX');
     return (
       <View style={{ paddingTop: 10 }}>
@@ -109,10 +99,9 @@ class AppLandingSrceen extends Component {
         </Button>
       </View>
     );
-  }
+  };
 
-  fontSizeRender = () => {
-    const { theme, fontScaleKey, changeFontScale } = this.props;
+  const fontSizeRender = () => {
     const gotoLabel = i18n.t('CURRENT_FONTSIZE', { key: fontScaleKey });
     return (
       <View style={{ paddingTop: 10 }}>
@@ -127,10 +116,9 @@ class AppLandingSrceen extends Component {
         </Button>
       </View>
     );
-  }
+  };
 
-  logoutRender = () => {
-    const { theme, setTheme } = this.props;
+  const logoutRender = () => {
     const gotoLabel = i18n.t('LOGOUT');
     return (
       <View style={{ paddingTop: 10 }}>
@@ -144,23 +132,21 @@ class AppLandingSrceen extends Component {
         </Button>
       </View>
     );
-  }
+  };
 
-  render() {
-    return (
-      <View style={styles.container}>
-        {this.logoRender()}
-        {this.helloRender()}
-        {this.languageRender()}
-        {this.themeRender()}
-        {this.gotoTodos()}
-        {this.gotoReduxTodos()}
-        {this.fontSizeRender()}
-        {this.logoutRender()}
-      </View>
-    );
-  }
-}
+  return (
+    <View style={styles.container}>
+      {logoRender()}
+      {helloRender()}
+      {languageRender()}
+      {themeRender()}
+      {gotoTodos()}
+      {gotoReduxTodos()}
+      {fontSizeRender()}
+      {logoutRender()}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -184,7 +170,6 @@ const styles = StyleSheet.create({
     height: 100,
   },
 });
-
 
 const mapStateToProps = (state) => ({
   language: state.app.language && state.app.language,

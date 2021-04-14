@@ -1,41 +1,38 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import {
-  FlatList, StyleSheet, ScrollView, View,
+  FlatList, StyleSheet, View,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import TodoItem from '../TodosList/components/TodoItem';
 import ReduxActions from '../../../stores/actions';
 
-class TodosListReduxScreen extends Component {
-  componentDidMount() {
-    const { fetchTodos } = this.props;
+const TodosListReduxScreen = ({ todosList, fetchTodos }) => {
+  useEffect(() => {
     fetchTodos();
-  }
+    return () => {
 
-  listRender = () => {
-    const { todosList } = this.props;
-    return (
-      <FlatList
-        data={todosList}
-        showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={({ highlighted }) => (
-          <View style={[styles.separator, highlighted && { marginLeft: 0 }]} />
-        )}
-        renderItem={({ item }) => <TodoItem item={item} />}
-        keyExtractor={(item) => item.id + new Date().toString()}
-      />
-    );
-  }
+    };
+  }, []);
 
-  render() {
-    return (
-      <ScrollView style={styles.container}>
-        {this.listRender()}
-      </ScrollView>
-    );
-  }
-}
+  const listRender = () => (
+    <FlatList
+      data={todosList}
+      showsVerticalScrollIndicator={false}
+      ItemSeparatorComponent={({ highlighted }) => (
+        <View style={[styles.separator, highlighted && { marginLeft: 0 }]} />
+      )}
+      renderItem={({ item }) => <TodoItem item={item} />}
+      keyExtractor={(item) => item.id + new Date().toString()}
+      style={styles.container}
+    />
+  );
+  return (
+    <>
+      {listRender()}
+    </>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

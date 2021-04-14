@@ -7,6 +7,7 @@ export const commonNavigationOptions = (navigation, screenProps) => ({
     backgroundColor: screenProps.theme.color.primary || '#409EFF',
     // height: 44,
     elevation: 0,
+    shadowOpacity: 0,
   },
   headerTitleStyle: {
     fontSize: 18,
