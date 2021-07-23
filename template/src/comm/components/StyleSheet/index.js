@@ -7,18 +7,17 @@ import Config from './config';
 
 const { width, height } = Dimensions.get('window');
 
-const { guidelineBaseWidth, guidelineBaseHeight, scalingFactor } = Config;
+const { guidelineBaseWidth } = Config;
 
 let horizontalFactor;
 
 let verticalFactor;
 
-// let adimensionalFactor;
 
 const calculateFactors = () => {
-  horizontalFactor = (width / guidelineBaseWidth) * scalingFactor;
-  verticalFactor = (height / guidelineBaseHeight) * scalingFactor;
-  // adimensionalFactor = (horizontalFactor + verticalFactor) / 2;
+  horizontalFactor = (width / guidelineBaseWidth) * 1;
+  verticalFactor = 1;
+  adimensionalFactor = horizontalFactor;
 };
 calculateFactors();
 console.log(height);
@@ -70,13 +69,9 @@ const PROPERTIES_DEPENDING_ON_NEITHER = [
   'borderBottomRightRadius',
 ];
 
-// const scaleHorizontally = (size = 0) => PixelRatio.roundToNearestPixel(size * horizontalFactor);
-// const scaleVertically = (size = 0) => PixelRatio.roundToNearestPixel(size * verticalFactor);
-// const scaleWithAverageRatio = (size = 0) => PixelRatio.roundToNearestPixel(size * adimensionalFactor);
-
-const scaleHorizontally = (size = 0) => PixelRatio.roundToNearestPixel(size * 1);
-const scaleVertically = (size = 0) => PixelRatio.roundToNearestPixel(size * 1);
-const scaleWithAverageRatio = (size = 0) => PixelRatio.roundToNearestPixel(size * 1);
+const scaleHorizontally = (size = 0) => PixelRatio.roundToNearestPixel(size * horizontalFactor);
+const scaleVertically = (size = 0) => PixelRatio.roundToNearestPixel(size * verticalFactor);
+const scaleWithAverageRatio = (size = 0) => PixelRatio.roundToNearestPixel(size * adimensionalFactor);
 
 export const StyleSheet = {
   ...RNStyleSheet,
